@@ -6,10 +6,11 @@ import EditIcon from '@mui/icons-material/Edit';
 
 interface DeckListItemProps {
 	deck: Deck;
+	handleDeleteDeck: (id: number) => void;
 }
 
 function DeckListItem(props: DeckListItemProps) {
-	const { deck } = props;
+	const { deck, handleDeleteDeck } = props;
 	const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 	const menu = useRef<HTMLDivElement | null>(null);
 
@@ -30,11 +31,16 @@ function DeckListItem(props: DeckListItemProps) {
 		};
 	}, []);
 
+	const handleDelete = () => {
+		handleDeleteDeck(deck._id);
+		setMenuIsOpen(false);
+	} 
+
 	return (
 		<div className="deck-item">
 			<div className="deck-item-header">
 				<div
-					className="deck-item-menu-button"
+					className={`deck-item-menu-button ${menuIsOpen && 'menu-open'}`}
 					onClick={() => setMenuIsOpen(!menuIsOpen)}
 				>
 					<MoreVertIcon />
@@ -43,7 +49,7 @@ function DeckListItem(props: DeckListItemProps) {
 				{menuIsOpen && (
 					<div className="deck-item-menu" ref={menu}>
 						<button className="menu-btn delete-btn" title="Delete">
-							<DeleteIcon />
+							<DeleteIcon onClick={handleDelete} />
 						</button>
 						<button className="menu-btn edit-btn" title="Edit">
 							<EditIcon />

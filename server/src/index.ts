@@ -42,6 +42,14 @@ app.post('/decks', async (req, res) => {
 	res.json(createdDeck);
 });
 
+app.delete('/decks/:id', async (req, res) => {
+	const { id } = req.params;
+
+	const deletedDeck = await Deck.findByIdAndDelete(id);
+
+	res.json(deletedDeck);
+});
+
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`);
 });

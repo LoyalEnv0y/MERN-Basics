@@ -13,6 +13,15 @@ function App() {
 		setDecks([...decks, newDeck]);
 	};
 
+	const deleteDeck = async (id: number) => {
+		try {
+			await axios.delete(`http://localhost:5000/decks/${id}`);
+			setDecks(decks.filter((deck) => deck._id !== id));
+		} catch (err) {
+			console.log('Error deleting deck. Error Message => ', err);
+		}
+	};
+
 	useEffect(() => {
 		const fetchDecks = async () => {
 			try {
@@ -28,7 +37,7 @@ function App() {
 
 	return (
 		<>
-			<DeckList decks={decks} />
+			<DeckList decks={decks} handleDeleteDeck={deleteDeck} />
 			<NewDeckForm handleAddDeck={addDeck} />
 		</>
 	);
