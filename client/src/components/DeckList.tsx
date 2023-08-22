@@ -1,6 +1,5 @@
 import DeckListItem from './DeckListItem';
 import { Deck } from '../types/index';
-import axios from 'axios';
 
 type DeckListProps = {
 	decks: Deck[];
