@@ -1,8 +1,11 @@
+import DeckList from './components/DeckList';
+import NewDeckForm from './components/NewDeckForm';
+
 function App() {
 	return (
 		<>
-			<h1>Hello, World!</h1>
-			<p>Modify me!</p>
+			<DeckList />
+			<NewDeckForm />
 		</>
 	);
 }
