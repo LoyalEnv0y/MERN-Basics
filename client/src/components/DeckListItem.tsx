@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Deck } from '../types/index';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -11,6 +11,24 @@ interface DeckListItemProps {
 function DeckListItem(props: DeckListItemProps) {
 	const { deck } = props;
 	const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+	const menu = useRef<HTMLDivElement | null>(null);
+
+	useEffect(() => {
+		const handler = (evt: MouseEvent) => {
+			const element = menu.current;
+			if (!element) return;
+
+			if (!element.contains(evt.target as Node)) {
+				setMenuIsOpen(false);
+			}
+		};
+
+		document.addEventListener('click', handler, true);
+
+		return () => {
+			document.removeEventListener('click', handler, true);
+		};
+	}, []);
 
 	return (
 		<div className="deck-item">
@@ -23,7 +41,7 @@ function DeckListItem(props: DeckListItemProps) {
 				</div>
 
 				{menuIsOpen && (
-					<div className="deck-item-menu">
+					<div className="deck-item-menu" ref={menu}>
 						<button className="menu-btn delete-btn" title="Delete">
 							<DeleteIcon />
 						</button>
