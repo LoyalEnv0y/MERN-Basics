@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,400;1,600&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	background-color: #202124;
+	color: white;
+	height: 100vh;
+	max-width: 1300px;
+	margin: 0 auto;
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 100px;
+}
+
+.deck-list {
+	width: 80%;
+	height: 400px;
+
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.deck-item {
+	min-width: 230px;
+	height: 250px;
+	padding: 10px 5px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	border-radius: 5px;
+	/* offset-x | offset-y | blur-radius | spread-radius | color */
+	box-shadow: -2px 2px 4px 1px rgb(131, 131, 131);
+
+	background-color: white;
+	color: black;
+}
+
+.deck-item-header {
+	width: 100%;
+	display: flex;
+	position: relative;
+}
+
+.deck-item-menu-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+.deck-item-menu-button:hover {
+	background-color: rgb(229, 229, 229);
+}
+
+.deck-item-menu {
+	position: absolute;
+	left: 13em;
+	top: 1.5em;
+
+	display: flex;
+	flex-direction: column;
+	
+	background-color: rgb(255, 255, 255);
+	box-shadow: -2px 1px 4px 0px rgb(131, 131, 131);
+	border-radius: 5px;
+
+}
+
+.menu-btn {
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+
+	padding: 3px 5px;
+
+	background-color: rgb(255, 255, 255);
+}
+
+.delete-btn {
+	color: rgb(195, 7, 7);
+}
+
+.edit-btn {
+	color: rgb(77, 146, 236)
+}

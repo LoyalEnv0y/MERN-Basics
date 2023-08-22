@@ -9,7 +9,7 @@ function DeckList(props: DeckListProps) {
 	const { decks } = props;
 
 	return (
-		<div>
+		<div className="deck-list">
 			{decks.map((deck) => (
 				<DeckListItem key={deck._id} deck={deck} />
 			))}

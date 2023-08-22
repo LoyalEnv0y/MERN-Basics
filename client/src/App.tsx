@@ -4,6 +4,8 @@ import NewDeckForm from './components/NewDeckForm';
 import axios from 'axios';
 import { Deck } from './types/index';
 
+import './styles/app.css';
+
 function App() {
 	const [decks, setDecks] = useState<Deck[]>([]);
 
