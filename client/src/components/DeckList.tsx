@@ -1,32 +1,16 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 import DeckListItem from './DeckListItem';
+import { Deck } from '../types/index';
 
-interface Deck {
-	_id: number;
-	title: string;
+interface DeckListProps {
+	decks: Deck[];
 }
 
-function DeckList() {
-	const [decks, setDecks] = useState<Deck[]>([]);
-
-	useEffect(() => {
-		const fetchDecks = async () => {
-			try {
-				const response = await axios.get('http://localhost:5000/decks');
-				setDecks(response.data);
-				console.log(response);
-			} catch (err) {
-				return <h3>Error while getting decks 🙀</h3>;
-			}
-		};
-
-		fetchDecks();
-	}, []);
+function DeckList(props: DeckListProps) {
+	const { decks } = props;
 
 	return (
 		<div>
-			{decks.map((deck: Deck) => (
+			{decks.map((deck) => (
 				<DeckListItem key={deck._id} deck={deck} />
 			))}
 		</div>

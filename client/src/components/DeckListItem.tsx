@@ -1,11 +1,10 @@
-interface DeckProps {
-	deck: {
-		_id: number;
-		title: string;
-	};
+import { Deck } from '../types/index';
+
+interface DeckListItemProps {
+	deck: Deck;
 }
 
-function DeckListItem(props: DeckProps) {
+function DeckListItem(props: DeckListItemProps) {
 	const { deck } = props;
 
 	return <div>{deck.title}</div>;

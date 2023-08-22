@@ -8,7 +8,11 @@ const app = express();
 const port = 5000;
 
 app.use(express.json());
-app.use(cors());
+app.use(
+	cors({
+		origin: '*',
+	})
+);
 
 mongoose
 	.connect(process.env.MONGO_URL ?? '')
@@ -23,7 +27,6 @@ app.get('/', (req, res) => {
 
 app.get('/decks', async (req, res) => {
 	const decks = await Deck.find({});
-	console.log(decks);
 	res.json(decks);
 });
 

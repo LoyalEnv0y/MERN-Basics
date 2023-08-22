@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Deck } from '../types/index';
 
-function NewDeckForm() {
+interface NewDeckFormProps {
+	handleAddDeck: (newDeck: Deck) => void;
+}
+
+function NewDeckForm(props: NewDeckFormProps) {
+	const { handleAddDeck } = props;
+
 	const [title, setTitle] = useState<string>('');
 
 	const handleTitleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,9 +19,11 @@ function NewDeckForm() {
 		evt.preventDefault();
 
 		try {
-			await axios.post('http://localhost:5000/decks', {
+			const resp = await axios.post('http://localhost:5000/decks', {
 				title,
 			});
+
+			handleAddDeck(resp.data);
 		} catch (err) {
 			console.log('Error sending deck information => ', err);
 		}
