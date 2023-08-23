@@ -1,10 +1,21 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Deck } from '../../types';
 
+// DEV ONLY!!!
+const delay = (duration: number) => {
+	return new Promise((resolve) => {
+		setTimeout(resolve, duration);
+	});
+};
+
 const decksApi = createApi({
 	reducerPath: 'decks',
 	baseQuery: fetchBaseQuery({
 		baseUrl: 'http://localhost:5000',
+		fetchFn: async (...args) => {
+			await delay(1000);
+			return fetch(...args);
+		},
 	}),
 	tagTypes: ['Deck'],
 	endpoints(builder) {
@@ -44,4 +55,5 @@ const decksApi = createApi({
 });
 
 export { decksApi };
-export const { useFetchDecksQuery, useAddDeckMutation, useDeleteDeckMutation } = decksApi;
+export const { useFetchDecksQuery, useAddDeckMutation, useDeleteDeckMutation } =
+	decksApi;

@@ -3,6 +3,8 @@ import { Deck } from '../types/index';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import { useDeleteDeckMutation } from '../store';
 
 interface DeckListItemProps {
@@ -13,7 +15,6 @@ const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 	const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 	const menu = useRef<HTMLDivElement | null>(null);
 	const [deleteDeck, results] = useDeleteDeckMutation();
-	console.log(results);
 
 	useEffect(() => {
 		const handler = (evt: MouseEvent) => {
@@ -33,8 +34,14 @@ const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 	}, []);
 
 	const handleDelete = () => {
-		deleteDeck(deck);
-		setMenuIsOpen(false);
+		deleteDeck(deck).unwrap();
+	};
+
+	const generateDeleteBtn = () => {
+		console.log('Error => ', results);
+		if (results.isLoading) return <AutorenewIcon className="loading" />;
+		if (results.error) return <PriorityHighIcon />;
+		return <DeleteIcon onClick={handleDelete} />;
 	};
 
 	return (
@@ -50,7 +57,7 @@ const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 				{menuIsOpen && (
 					<div className="deck-item-menu" ref={menu}>
 						<button className="menu-btn delete-btn" title="Delete">
-							<DeleteIcon onClick={handleDelete} />
+							{generateDeleteBtn()}
 						</button>
 						<button className="menu-btn edit-btn" title="Edit">
 							<EditIcon />

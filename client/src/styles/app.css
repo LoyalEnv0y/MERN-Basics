@@ -30,7 +30,7 @@ body {
 	justify-content: space-evenly;
 	align-items: center;
 	flex-wrap: wrap;
-	gap: 1rem
+	gap: 1rem;
 }
 
 .deck-item {
@@ -85,7 +85,7 @@ body {
 
 	display: flex;
 	flex-direction: column;
-	
+
 	background-color: rgb(255, 255, 255);
 	box-shadow: -2px 1px 4px 0px rgb(131, 131, 131);
 	border-radius: 5px;
@@ -111,5 +111,50 @@ body {
 }
 
 .edit-btn {
-	color: rgb(77, 146, 236)
+	color: rgb(77, 146, 236);
+}
+
+.skeleton-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	gap: 40px;
+	margin-bottom: 40px;
+}
+
+.skeleton {
+	background-color: white;
+	border-radius: 5px;
+
+	animation: glow-and-fade 2s ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+.loading {
+	animation: spinner 0.5s linear;
+	animation-iteration-count: infinite;
+}
+
+@keyframes glow-and-fade {
+	from {
+		opacity: 0.3;
+	}
+
+	50% {
+		opacity: 0.8;
+	}
+
+	to {
+		opacity: 0.3;
+	}
+}
+
+@keyframes spinner {
+	from {
+		transform: rotate(0deg)
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
 }
