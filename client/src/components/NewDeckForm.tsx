@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useAddDeckMutation } from '../store';
 
-function NewDeckForm() {
+const NewDeckForm = () => {
 	const [title, setTitle] = useState<string>('');
 	const [addDeck, results] = useAddDeckMutation();
 	// TODO: DELETE BELOW AND IMPLEMENT PROPER ERRORS AND LOADERS
-	console.log(results)
+	console.log(results);
 
 	const handleTitleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
 		setTitle(evt.target.value);
@@ -30,6 +30,6 @@ function NewDeckForm() {
 			<button>Create Deck</button>
 		</form>
 	);
-}
+};
 
 export default NewDeckForm;

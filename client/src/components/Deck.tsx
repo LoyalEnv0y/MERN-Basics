@@ -1,4 +1,4 @@
-function Deck() {
+const Deck = () => {
 	return <div>Deck</div>;
 }
 
