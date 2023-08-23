@@ -14,4 +14,8 @@ const store = configureStore({
 setupListeners(store.dispatch);
 
 export { store };
-export { useFetchDecksQuery, useAddDeckMutation } from './apis/decksApi';
+export {
+	useFetchDecksQuery,
+	useAddDeckMutation,
+	useDeleteDeckMutation,
+} from './apis/decksApi';

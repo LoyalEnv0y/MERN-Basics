@@ -3,14 +3,17 @@ import { Deck } from '../types/index';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { useDeleteDeckMutation } from '../store';
 
 interface DeckListItemProps {
 	deck: Deck;
 }
 
-const DeckListItem:FC<DeckListItemProps> = ({deck}) => {
+const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 	const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 	const menu = useRef<HTMLDivElement | null>(null);
+	const [deleteDeck, results] = useDeleteDeckMutation();
+	console.log(results);
 
 	useEffect(() => {
 		const handler = (evt: MouseEvent) => {
@@ -30,7 +33,7 @@ const DeckListItem:FC<DeckListItemProps> = ({deck}) => {
 	}, []);
 
 	const handleDelete = () => {
-		// TODO: implement deleting
+		deleteDeck(deck);
 		setMenuIsOpen(false);
 	};
 
@@ -59,6 +62,6 @@ const DeckListItem:FC<DeckListItemProps> = ({deck}) => {
 			<div className="deck-item-body">{deck.title}</div>
 		</div>
 	);
-}
+};
 
 export default DeckListItem;

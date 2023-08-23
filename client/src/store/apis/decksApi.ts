@@ -29,9 +29,19 @@ const decksApi = createApi({
 				},
 				invalidatesTags: ['Deck'],
 			}),
+
+			deleteDeck: builder.mutation<void, Deck>({
+				query: (deck) => {
+					return {
+						url: `/decks/${deck._id}`,
+						method: 'DELETE',
+					};
+				},
+				invalidatesTags: ['Deck'],
+			}),
 		};
 	},
 });
 
 export { decksApi };
-export const { useFetchDecksQuery, useAddDeckMutation } = decksApi;
+export const { useFetchDecksQuery, useAddDeckMutation, useDeleteDeckMutation } = decksApi;
