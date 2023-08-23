@@ -50,12 +50,10 @@ body {
 	color: black;
 
 	cursor: pointer;
-	transition: 200ms;
 }
 
 .deck-item:hover {
-	background-color: #ebebeb;
-	transform: translate(1px, -1px);
+	background-color: #f3f3f3;
 }
 
 .deck-item-header {
@@ -73,11 +71,11 @@ body {
 }
 
 .menu-open {
-	background-color: rgb(229, 229, 229);
+	background-color: #dbdbdb;
 }
 
 .deck-item-menu-button:hover {
-	background-color: rgb(229, 229, 229);
+	background-color: #dbdbdb;
 }
 
 .deck-item-menu {

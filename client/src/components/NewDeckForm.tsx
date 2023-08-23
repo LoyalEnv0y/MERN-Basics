@@ -1,15 +1,11 @@
 import { useState } from 'react';
-import axios from 'axios';
-import { Deck } from '../types/index';
+import { useAddDeckMutation } from '../store';
 
-interface NewDeckFormProps {
-	handleAddDeck: (newDeck: Deck) => void;
-}
-
-function NewDeckForm(props: NewDeckFormProps) {
-	const { handleAddDeck } = props;
-
+function NewDeckForm() {
 	const [title, setTitle] = useState<string>('');
+	const [addDeck, results] = useAddDeckMutation();
+	// TODO: DELETE BELOW AND IMPLEMENT PROPER ERRORS AND LOADERS
+	console.log(results)
 
 	const handleTitleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
 		setTitle(evt.target.value);
@@ -17,17 +13,7 @@ function NewDeckForm(props: NewDeckFormProps) {
 
 	const handleFormSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
 		evt.preventDefault();
-
-		try {
-			const resp = await axios.post('http://localhost:5000/decks', {
-				title,
-			});
-
-			handleAddDeck(resp.data);
-		} catch (err) {
-			console.log('Error sending deck information => ', err);
-		}
-
+		addDeck(title);
 		setTitle('');
 	};
 

@@ -6,11 +6,10 @@ import EditIcon from '@mui/icons-material/Edit';
 
 interface DeckListItemProps {
 	deck: Deck;
-	handleDeleteDeck: (id: number) => void;
 }
 
 function DeckListItem(props: DeckListItemProps) {
-	const { deck, handleDeleteDeck } = props;
+	const { deck } = props;
 	const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
 	const menu = useRef<HTMLDivElement | null>(null);
 
@@ -32,9 +31,9 @@ function DeckListItem(props: DeckListItemProps) {
 	}, []);
 
 	const handleDelete = () => {
-		handleDeleteDeck(deck._id);
+		// TODO: implement deleting
 		setMenuIsOpen(false);
-	} 
+	};
 
 	return (
 		<div className="deck-item">

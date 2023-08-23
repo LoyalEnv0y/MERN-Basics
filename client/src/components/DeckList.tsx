@@ -1,22 +1,22 @@
 import DeckListItem from './DeckListItem';
+import { useFetchDecksQuery } from '../store';
 import { Deck } from '../types/index';
 
-type DeckListProps = {
-	decks: Deck[];
-	handleDeleteDeck: (id: number) => void;
-};
+function DeckList() {
+	const { data, error, isFetching } = useFetchDecksQuery();
 
-function DeckList(props: DeckListProps) {
-	const { decks, handleDeleteDeck } = props;
+	if (error) {
+		return <div>An error has occurred</div>;
+	}
+
+	if (isFetching) {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<div className="deck-list">
-			{decks.map((deck) => (
-				<DeckListItem
-					key={deck._id}
-					deck={deck}
-					handleDeleteDeck={handleDeleteDeck}
-				/>
+			{data?.map((deck: Deck) => (
+				<DeckListItem key={deck._id} deck={deck} />
 			))}
 		</div>
 	);
