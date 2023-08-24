@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useAddDeckMutation } from '../store';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
 
 const NewDeckForm = () => {
 	const [title, setTitle] = useState<string>('');
 	const [addDeck, results] = useAddDeckMutation();
-	// TODO: DELETE BELOW AND IMPLEMENT PROPER ERRORS AND LOADERS
-	console.log(results);
 
 	const handleTitleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
 		setTitle(evt.target.value);
@@ -29,7 +28,13 @@ const NewDeckForm = () => {
 				/>
 			</section>
 
-			<button className="btn">Create Deck</button>
+			<button className="btn">
+				{results.isLoading ? (
+					<AutorenewIcon className="loading" />
+				) : (
+					'Create Deck'
+				)}
+			</button>
 		</form>
 	);
 };
