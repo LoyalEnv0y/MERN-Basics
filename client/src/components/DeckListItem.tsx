@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 // Store
 import { useDeleteDeckMutation } from '../store';
@@ -97,9 +98,13 @@ const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 				)}
 			</div>
 
-			<Link to={`/decks/${deck._id}`} className="deck-item-body">
-				{getDeckItemBody()}
-			</Link>
+			<div className="deck-item-body">{getDeckItemBody()}</div>
+
+			<div className="deck-item-footer">
+				<Link to={`/decks/${deck._id}`} title={"See Cards of Deck"}>
+					<ArrowForwardIosIcon style={{fontSize: '25px'}} />
+				</Link>
+			</div>
 		</div>
 	);
 };

@@ -69,8 +69,9 @@ textarea {
 }
 
 textarea {
-	height:90px;
+	height: 90px;
 	font-family: 'Poppins', sans-serif;
+	padding: 10px;
 }
 
 .deck-info {
@@ -139,6 +140,11 @@ textarea {
 	width: 100%;
 	display: flex;
 	position: relative;
+	flex: 1;
+}
+
+.deck-title {
+	margin-bottom: 20px;
 }
 
 .deck-item-menu-button {
@@ -195,14 +201,17 @@ textarea {
 
 .deck-item-body {
 	display: flex;
+	width: 100%;
 	flex-direction: column;
 	align-items: center;
-	cursor: pointer;
-	height: 100%;
+	flex: 7;
 }
 
-.deck-title {
-	margin-bottom: 20px;
+.deck-item-footer {
+	display: flex;
+	width: 100%;
+	justify-content: end;
+	flex: 1;
 }
 
 .skeleton-list {
