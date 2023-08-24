@@ -9,7 +9,9 @@ const NewDeckForm = () => {
 	});
 	const [addDeck, results] = useAddDeckMutation();
 
-	const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (
+		evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
 		setDeckInfo({ ...deckInfo, [evt.target.name]: evt.target.value });
 	};
 
@@ -34,12 +36,12 @@ const NewDeckForm = () => {
 
 			<section className="deck-info">
 				<label htmlFor="deck-desc">Deck Description:</label>
-				<input
-					type="text"
+				<textarea
 					id="deck-desc"
 					name="description"
 					onChange={handleChange}
 					value={deckInfo.description}
+					style={{width: '185px'}}
 				/>
 			</section>
 

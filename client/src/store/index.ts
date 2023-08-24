@@ -17,5 +17,6 @@ export { store };
 export {
 	useFetchDecksQuery,
 	useAddDeckMutation,
+	useEditDeckMutation,
 	useDeleteDeckMutation,
 } from './apis/decksApi';

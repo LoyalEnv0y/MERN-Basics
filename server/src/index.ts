@@ -43,6 +43,18 @@ app.post('/decks', async (req, res) => {
 	res.json(createdDeck);
 });
 
+app.put('/decks/:id', async (req, res) => {
+	const { id } = req.params;
+	const { deck } = req.body;
+	
+	const updatedDeck = await Deck.findByIdAndUpdate(id, {
+		title: deck.title,
+		description: deck.description,
+	});
+
+	res.json(updatedDeck);
+});
+
 app.delete('/decks/:id', async (req, res) => {
 	const { id } = req.params;
 

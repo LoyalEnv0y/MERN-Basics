@@ -6,13 +6,15 @@ import EditIcon from '@mui/icons-material/Edit';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import { useDeleteDeckMutation } from '../store';
+import EditDeckForm from './EditDeckForm';
 
 interface DeckListItemProps {
 	deck: Deck;
 }
 
 const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
-	const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+	const [menuIsOpen, setMenuIsOpen] = useState(false);
+	const [isOnEdit, setIsOnEdit] = useState(false);
 	const menu = useRef<HTMLDivElement | null>(null);
 	const [deleteDeck, results] = useDeleteDeckMutation();
 
@@ -37,11 +39,33 @@ const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 		deleteDeck(deck).unwrap();
 	};
 
+	const handleAllowEdit = () => {
+		setIsOnEdit(!isOnEdit);
+		setMenuIsOpen(false);
+	};
+
 	const generateDeleteBtn = () => {
 		console.log('Error => ', results);
 		if (results.isLoading) return <AutorenewIcon className="loading" />;
 		if (results.error) return <PriorityHighIcon />;
 		return <DeleteIcon onClick={handleDelete} />;
+	};
+
+	const getDeckItemBody = () => {
+		if (isOnEdit)
+			return (
+				<EditDeckForm
+					deck={deck}
+					handleCancelEdit={() => setIsOnEdit(false)}
+				/>
+			);
+
+		return (
+			<>
+				<div className="deck-title">{deck.title}</div>
+				<div className="deck-description">{deck.description}</div>
+			</>
+		);
 	};
 
 	return (
@@ -60,16 +84,13 @@ const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 							{generateDeleteBtn()}
 						</button>
 						<button className="menu-btn edit-btn" title="Edit">
-							<EditIcon />
+							<EditIcon onClick={handleAllowEdit} />
 						</button>
 					</div>
 				)}
 			</div>
 
-			<div className="deck-item-body">
-				<div className="deck-title">{deck.title}</div>
-				<div className="deck-description">{deck.description}</div>
-			</div>
+			<div className="deck-item-body">{getDeckItemBody()}</div>
 		</div>
 	);
 };

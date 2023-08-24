@@ -22,7 +22,7 @@ body {
 	margin-top: 100px;
 }
 
-.btn {
+/* .btn {
 	background-color: #ffffff;
 	border: 1px solid rgb(209, 213, 219);
 	border-radius: 0.5rem;
@@ -43,6 +43,18 @@ body {
 	user-select: none;
 	-webkit-user-select: none;
 	touch-action: manipulation;
+} */
+
+.btn {
+	background-color: #ffffff;
+	border: none;
+	border-radius: 0.5rem;
+	color: #111827;
+	padding: 0.75rem 1rem;
+	text-align: center;
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
 }
 
 .btn:hover {
@@ -58,7 +70,8 @@ body {
 	box-shadow: none;
 }
 
-input {
+input,
+textarea {
 	max-width: 190px;
 	background-color: #f5f5f5;
 	color: #242424;
@@ -69,6 +82,11 @@ input {
 	border: none;
 	line-height: 1.15;
 	box-shadow: 0px 10px 20px -18px;
+}
+
+textarea {
+	height:90px;
+	font-family: 'Poppins', sans-serif;
 }
 
 .deck-info {
@@ -113,7 +131,6 @@ input {
 	overflow-y: auto;
 	overflow-x: visible;
 }
-
 
 .deck-item::-webkit-scrollbar {
 	width: 6px;
@@ -201,10 +218,6 @@ input {
 
 .deck-title {
 	margin-bottom: 20px;
-}
-
-.deck-description {
-	text-align: justify;
 }
 
 .skeleton-list {
