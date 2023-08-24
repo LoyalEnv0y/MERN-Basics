@@ -2,6 +2,8 @@ import { FC, useState } from 'react';
 import { Deck } from '../types';
 import { useEditDeckMutation } from '../store';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
+import CheckIcon from '@mui/icons-material/Check';
+import ClearIcon from '@mui/icons-material/Clear';
 
 interface EditDeckFromProps {
 	deck: Deck;
@@ -52,16 +54,20 @@ const EditDeckForm: FC<EditDeckFromProps> = ({ deck, handleCancelEdit }) => {
 			</div>
 
 			<button className="btn" style={style}>
-				{results.isLoading ? <AutorenewIcon className='loading'/> : 'Confirm' }
+				{results.isLoading ? (
+					<AutorenewIcon className="loading" />
+				) : (
+					<CheckIcon />
+				)}
 			</button>
 
 			<button
 				className="btn"
-				style={{...style, marginLeft: '5px'}}
+				style={{ ...style, marginLeft: '5px' }}
 				type="button"
 				onClick={handleCancelEdit}
 			>
-				Cancel
+				<ClearIcon />
 			</button>
 		</form>
 	);
