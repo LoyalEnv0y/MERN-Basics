@@ -110,16 +110,18 @@ input {
 	color: black;
 
 	cursor: pointer;
-
 	overflow-y: auto;
+	overflow-x: visible;
 }
 
+
 .deck-item::-webkit-scrollbar {
-	width: 5px;
+	width: 6px;
+	height: 6px;
 }
 
 .deck-item::-webkit-scrollbar-track {
-	background-color: #bababa;
+	background-color: #d4d4d4;
 	border-radius: 10px;
 }
 
@@ -128,8 +130,9 @@ input {
 	border-radius: 10px;
 }
 
-.deck-item:hover {
-	background-color: #f3f3f3;
+.deck-item::-webkit-scrollbar-thumb:hover {
+	background-color: #dd8c00;
+	border-radius: 10px;
 }
 
 .deck-item-header {
@@ -198,6 +201,10 @@ input {
 
 .deck-title {
 	margin-bottom: 20px;
+}
+
+.deck-description {
+	text-align: justify;
 }
 
 .skeleton-list {
