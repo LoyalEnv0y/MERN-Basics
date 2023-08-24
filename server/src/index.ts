@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import 'dotenv/config';
 import deckRouter from './routes/deck';
+import cardRouter from './routes/card';
 
 const app = express();
 const port = 5000;
@@ -25,6 +26,7 @@ app.use(
 
 // Routes
 app.use('/decks', deckRouter);
+app.use('/decks/:deckId/cards', cardRouter);
 
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`);
