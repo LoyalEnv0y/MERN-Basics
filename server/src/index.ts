@@ -2,18 +2,12 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import 'dotenv/config';
-import Deck from './models/Deck';
+import deckRouter from './routes/deck';
 
 const app = express();
 const port = 5000;
 
-app.use(express.json());
-app.use(
-	cors({
-		origin: '*',
-	})
-);
-
+// Mongoose Connection
 mongoose
 	.connect(process.env.MONGO_URL ?? '')
 	.then(() => console.log('Mongo Atlas connection successful'))
@@ -21,47 +15,16 @@ mongoose
 		console.log('Error when connecting to Mongo Atlas. ERROR MESSAGE => ', err)
 	);
 
-app.get('/', (req, res) => {
-	res.send('<h1>Welcome Here</h1>');
-});
+// Configs
+app.use(express.json());
+app.use(
+	cors({
+		origin: '*',
+	})
+);
 
-app.get('/decks', async (req, res) => {
-	const decks = await Deck.find({});
-	res.json(decks);
-});
-
-app.post('/decks', async (req, res) => {
-	const { title, description } = req.body;
-
-	const newDeck = new Deck({
-		title,
-		description,
-	});
-
-	const createdDeck = await newDeck.save();
-
-	res.json(createdDeck);
-});
-
-app.put('/decks/:id', async (req, res) => {
-	const { id } = req.params;
-	const { deck } = req.body;
-	
-	const updatedDeck = await Deck.findByIdAndUpdate(id, {
-		title: deck.title,
-		description: deck.description,
-	});
-
-	res.json(updatedDeck);
-});
-
-app.delete('/decks/:id', async (req, res) => {
-	const { id } = req.params;
-
-	const deletedDeck = await Deck.findByIdAndDelete(id);
-
-	res.json(deletedDeck);
-});
+// Routes
+app.use('/decks', deckRouter);
 
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`);
