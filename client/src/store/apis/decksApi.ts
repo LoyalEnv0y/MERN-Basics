@@ -30,11 +30,11 @@ const decksApi = createApi({
 				providesTags: ['Deck'],
 			}),
 
-			addDeck: builder.mutation<void, string>({
-				query: (deckTitle) => {
+			addDeck: builder.mutation<void, Deck>({
+				query: (deck) => {
 					return {
 						url: '/decks',
-						body: { title: deckTitle },
+						body: { title: deck.title, description: deck.description },
 						method: 'POST',
 					};
 				},

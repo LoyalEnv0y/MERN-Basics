@@ -3,28 +3,43 @@ import { useAddDeckMutation } from '../store';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 
 const NewDeckForm = () => {
-	const [title, setTitle] = useState<string>('');
+	const [deckInfo, setDeckInfo] = useState({
+		title: '',
+		description: '',
+	});
 	const [addDeck, results] = useAddDeckMutation();
 
-	const handleTitleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-		setTitle(evt.target.value);
+	const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+		setDeckInfo({ ...deckInfo, [evt.target.name]: evt.target.value });
 	};
 
 	const handleFormSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
 		evt.preventDefault();
-		addDeck(title);
-		setTitle('');
+		addDeck(deckInfo);
+		setDeckInfo({ title: '', description: '' });
 	};
 
 	return (
 		<form onSubmit={handleFormSubmit}>
 			<section className="deck-info">
-				<label htmlFor="deck-title">New Deck Title:</label>
+				<label htmlFor="deck-title">Deck Title:</label>
 				<input
 					type="text"
 					id="deck-title"
-					onChange={handleTitleChange}
-					value={title}
+					name="title"
+					onChange={handleChange}
+					value={deckInfo.title}
+				/>
+			</section>
+
+			<section className="deck-info">
+				<label htmlFor="deck-desc">Deck Description:</label>
+				<input
+					type="text"
+					id="deck-desc"
+					name="description"
+					onChange={handleChange}
+					value={deckInfo.description}
 				/>
 			</section>
 

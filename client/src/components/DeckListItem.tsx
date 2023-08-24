@@ -66,7 +66,10 @@ const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 				)}
 			</div>
 
-			<div className="deck-item-body">{deck.title}</div>
+			<div className="deck-item-body">
+				<div className="deck-title">{deck.title}</div>
+				<div className="deck-description">{deck.description}</div>
+			</div>
 		</div>
 	);
 };

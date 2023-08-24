@@ -31,10 +31,11 @@ app.get('/decks', async (req, res) => {
 });
 
 app.post('/decks', async (req, res) => {
-	const { title } = req.body;
+	const { title, description } = req.body;
 
 	const newDeck = new Deck({
 		title,
+		description,
 	});
 
 	const createdDeck = await newDeck.save();

@@ -23,56 +23,59 @@ body {
 }
 
 .btn {
-  background-color: #FFFFFF;
-  border: 1px solid rgb(209,213,219);
-  border-radius: .5rem;
-  box-sizing: border-box;
-  color: #111827;
-  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  font-size: .875rem;
-  font-weight: 600;
-  line-height: 1.25rem;
-  padding: .75rem 1rem;
-  text-align: center;
-  text-decoration: none #D1D5DB solid;
-  text-decoration-thickness: auto;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+	background-color: #ffffff;
+	border: 1px solid rgb(209, 213, 219);
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	color: #111827;
+	font-family: 'Inter var', ui-sans-serif, system-ui, -apple-system, system-ui,
+		'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.25rem;
+	padding: 0.75rem 1rem;
+	text-align: center;
+	text-decoration: none #d1d5db solid;
+	text-decoration-thickness: auto;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
 }
 
 .btn:hover {
-  background-color: #f1f1f1;
+	background-color: #f1f1f1;
 }
 
 .btn:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+	outline: 2px solid transparent;
+	outline-offset: 2px;
 }
 
 .btn:focus-visible {
-  box-shadow: none;
+	box-shadow: none;
 }
 
 input {
-  max-width: 190px;
-  background-color: #f5f5f5;
-  color: #242424;
-  padding: .15rem .5rem;
-  min-height: 40px;
-  border-radius: 4px;
-  outline: none;
-  border: none;
-  line-height: 1.15;
-  box-shadow: 0px 10px 20px -18px;
+	max-width: 190px;
+	background-color: #f5f5f5;
+	color: #242424;
+	padding: 0.15rem 0.5rem;
+	min-height: 40px;
+	border-radius: 4px;
+	outline: none;
+	border: none;
+	line-height: 1.15;
+	box-shadow: 0px 10px 20px -18px;
 }
 
 .deck-info {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: 10px;
 }
 
 .deck-info label {
@@ -91,7 +94,7 @@ input {
 }
 
 .deck-item {
-	min-width: 230px;
+	width: 230px;
 	height: 250px;
 	padding: 10px 5px;
 
@@ -107,6 +110,22 @@ input {
 	color: black;
 
 	cursor: pointer;
+
+	overflow-y: auto;
+}
+
+.deck-item::-webkit-scrollbar {
+	width: 5px;
+}
+
+.deck-item::-webkit-scrollbar-track {
+	background-color: #bababa;
+	border-radius: 10px;
+}
+
+.deck-item::-webkit-scrollbar-thumb {
+	background-color: #ffa200;
+	border-radius: 10px;
 }
 
 .deck-item:hover {
@@ -171,6 +190,16 @@ input {
 	color: rgb(77, 146, 236);
 }
 
+.deck-item-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.deck-title {
+	margin-bottom: 20px;
+}
+
 .skeleton-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -208,7 +237,7 @@ input {
 
 @keyframes spinner {
 	from {
-		transform: rotate(0deg)
+		transform: rotate(0deg);
 	}
 
 	to {
