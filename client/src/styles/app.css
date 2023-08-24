@@ -15,6 +15,11 @@ body {
 	margin: 0 auto;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 #root {
 	display: flex;
 	flex-direction: column;
@@ -106,7 +111,6 @@ textarea {
 	background-color: white;
 	color: black;
 
-	cursor: pointer;
 	overflow-y: auto;
 	overflow-x: visible;
 }
@@ -193,6 +197,8 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	cursor: pointer;
+	height: 100%;
 }
 
 .deck-title {

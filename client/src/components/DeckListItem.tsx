@@ -1,12 +1,20 @@
+// React & Types
 import { useEffect, useState, useRef, FC } from 'react';
 import { Deck } from '../types/index';
+
+// Icons
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
+
+// Store
 import { useDeleteDeckMutation } from '../store';
+
+// Components
 import EditDeckForm from './EditDeckForm';
+import { Link } from 'react-router-dom';
 
 interface DeckListItemProps {
 	deck: Deck;
@@ -45,7 +53,6 @@ const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 	};
 
 	const generateDeleteBtn = () => {
-		console.log('Error => ', results);
 		if (results.isLoading) return <AutorenewIcon className="loading" />;
 		if (results.error) return <PriorityHighIcon />;
 		return <DeleteIcon onClick={handleDelete} />;
@@ -90,7 +97,9 @@ const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 				)}
 			</div>
 
-			<div className="deck-item-body">{getDeckItemBody()}</div>
+			<Link to={`/decks/${deck._id}`} className="deck-item-body">
+				{getDeckItemBody()}
+			</Link>
 		</div>
 	);
 };
