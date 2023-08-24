@@ -19,15 +19,17 @@ const NewDeckForm = () => {
 
 	return (
 		<form onSubmit={handleFormSubmit}>
-			<label htmlFor="deck-title">New Deck</label>
-			<input
-				type="text"
-				id="deck-title"
-				onChange={handleTitleChange}
-				value={title}
-			/>
+			<section className="deck-info">
+				<label htmlFor="deck-title">New Deck Title:</label>
+				<input
+					type="text"
+					id="deck-title"
+					onChange={handleTitleChange}
+					value={title}
+				/>
+			</section>
 
-			<button>Create Deck</button>
+			<button className="btn">Create Deck</button>
 		</form>
 	);
 };
