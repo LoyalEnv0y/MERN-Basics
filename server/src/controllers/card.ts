@@ -9,3 +9,12 @@ export const getCards = async (req: Request, res: Response) => {
 
 	res.json(deck?.cards);
 };
+
+export const addCard = async (req: Request, res: Response) => {
+	const { deckId } = req.params;
+	const { card } = req.body;
+
+	const deck = await Deck.findByIdAndUpdate(deckId, { $push: { cards: card } });
+
+	res.json(deck);
+};

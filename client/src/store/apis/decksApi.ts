@@ -13,7 +13,7 @@ const decksApi = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: 'http://localhost:5000',
 		fetchFn: async (...args) => {
-			await delay(1000);
+			await delay(100);
 			return fetch(...args);
 		},
 	}),

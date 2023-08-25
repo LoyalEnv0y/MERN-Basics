@@ -101,8 +101,12 @@ const DeckListItem: FC<DeckListItemProps> = ({ deck }) => {
 			<div className="deck-item-body">{getDeckItemBody()}</div>
 
 			<div className="deck-item-footer">
-				<Link to={`/decks/${deck._id}`} title={"See Cards of Deck"}>
-					<ArrowForwardIosIcon style={{fontSize: '25px'}} />
+				<Link
+					to={`/decks/${deck._id}/cards`}
+					state={deck}
+					title={'See Cards of Deck'}
+				>
+					<ArrowForwardIosIcon style={{ fontSize: '25px' }} />
 				</Link>
 			</div>
 		</div>

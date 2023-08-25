@@ -1,5 +1,11 @@
 export type Deck = {
-	_id?: number;
+	_id?: string;
 	title: string;
 	description: string;
+};
+
+export type Card = {
+	_id?: string;
+	title: string;
+	body: string;
 };
