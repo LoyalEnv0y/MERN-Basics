@@ -4,7 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon -w \"src/**\" -e \"ts,json\" -x \"ts-node src/index.ts\""
+		"dev": "nodemon -w \"src/**\" -e \"ts,json\" -x \"ts-node src/index.ts\"",
+		"build": "tsc && node dist/index.js"
 	},
 	"keywords": [],
 	"author": "",
