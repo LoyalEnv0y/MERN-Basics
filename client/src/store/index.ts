@@ -25,4 +25,8 @@ export {
 	useDeleteDeckMutation,
 } from './apis/decksApi';
 
-export { useFetchCardsQuery, useAddCardMutation } from './apis/cardsApi';
+export {
+	useFetchCardsQuery,
+	useAddCardMutation,
+	useDeleteCardMutation,
+} from './apis/cardsApi';

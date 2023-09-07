@@ -21,3 +21,9 @@ export const addCard = async (req: Request, res: Response) => {
 
 	res.json(deck);
 };
+
+export const deleteCard = async (req: Request, res: Response) => {
+	const { id } = req.params;
+	const deletedCard = await Card.findByIdAndDelete(id);
+	res.json(deletedCard);
+};

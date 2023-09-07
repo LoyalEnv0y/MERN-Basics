@@ -13,7 +13,7 @@ const cardsApi = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: 'http://localhost:5000',
 		fetchFn: async (...args) => {
-			await delay(1000);
+			await delay(100);
 			return fetch(...args);
 		},
 	}),
@@ -52,18 +52,19 @@ const cardsApi = createApi({
 			// 	invalidatesTags: ['Deck'],
 			// }),
 
-			// deleteDeck: builder.mutation<void, Deck>({
-			// 	query: (deck) => {
-			// 		return {
-			// 			url: `/decks/${deck._id}`,
-			// 			method: 'DELETE',
-			// 		};
-			// 	},
-			// 	invalidatesTags: ['Deck'],
-			// }),
+			deleteCard: builder.mutation<void, { deckId: string; card: Card }>({
+				query: ({deckId, card}) => {
+					return {
+						url: `decks/${deckId}/cards/${card._id}`,
+						method: 'DELETE',
+					};
+				},
+				invalidatesTags: ['Card'],
+			}),
 		};
 	},
 });
 
 export { cardsApi };
-export const { useFetchCardsQuery, useAddCardMutation } = cardsApi;
+export const { useFetchCardsQuery, useAddCardMutation, useDeleteCardMutation } =
+	cardsApi;
