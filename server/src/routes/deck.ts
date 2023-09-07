@@ -1,5 +1,10 @@
 import express from 'express';
-import { addDeck, deleteDeck, getAllDecks, updateDeck } from '../controllers/deck';
+import {
+	addDeck,
+	deleteDeck,
+	getAllDecks,
+	updateDeck,
+} from '../controllers/deck';
 const router = express.Router();
 
 router.route('/').get(getAllDecks).post(addDeck);

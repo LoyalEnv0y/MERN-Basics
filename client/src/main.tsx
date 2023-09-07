@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom/client';
 
 // Pages
 import App from './App.tsx';
-import Deck from './components/Deck.tsx';
 
 // Store and Router
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store/index.ts';
+import Cards from './pages/Cards.tsx';
 
 const router = createBrowserRouter([
 	{
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
 		element: <App />,
 	},
 	{
-		path: '/decks/:id',
-		element: <Deck />,
+		path: '/decks/:deckId/cards',
+		element: <Cards />,
 	},
 ]);
 

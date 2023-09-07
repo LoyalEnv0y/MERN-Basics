@@ -14,7 +14,10 @@ export const addCard = async (req: Request, res: Response) => {
 	const { deckId } = req.params;
 	const { card } = req.body;
 
-	const deck = await Deck.findByIdAndUpdate(deckId, { $push: { cards: card } });
+	const createdCard = await new Card(card).save();
+	const deck = await Deck.findByIdAndUpdate(deckId, {
+		$push: { cards: createdCard },
+	});
 
 	res.json(deck);
 };

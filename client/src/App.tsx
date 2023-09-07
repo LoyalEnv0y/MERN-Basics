@@ -1,12 +1,12 @@
-import DeckList from './components/DeckList';
 import NewDeckForm from './components/NewDeckForm';
+import Decks from './pages/Decks';
 
 import './styles/app.css';
 
 function App() {
 	return (
 		<>
-			<DeckList />
+			<Decks />
 			<NewDeckForm />
 		</>
 	);

@@ -1,9 +1,9 @@
-import DeckListItem from './DeckListItem';
+import DeckListItem from '../components/DeckListItem';
+import Skeleton from '../components/Skeleton';
 import { useFetchDecksQuery } from '../store';
 import { Deck } from '../types/index';
-import Skeleton from './Skeleton';
 
-const DeckList = () => {
+const Decks = () => {
 	const { data, error, isFetching } = useFetchDecksQuery();
 
 	// TODO: Implement better error result.
@@ -12,7 +12,7 @@ const DeckList = () => {
 	}
 
 	if (isFetching) {
-		return <Skeleton times={4} width={230} height={250}/>
+		return <Skeleton times={4} width={230} height={250} />;
 	}
 
 	return (
@@ -22,6 +22,6 @@ const DeckList = () => {
 			))}
 		</div>
 	);
-}
+};
 
-export default DeckList;
+export default Decks;
