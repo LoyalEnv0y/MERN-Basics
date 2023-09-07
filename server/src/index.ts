@@ -6,7 +6,7 @@ import deckRouter from './routes/deck';
 import cardRouter from './routes/card';
 
 const app = express();
-const port = 5000;
+const port = 4000;
 
 // Mongoose Connection
 mongoose
