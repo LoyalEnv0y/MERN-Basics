@@ -11,7 +11,7 @@ const delay = (duration: number) => {
 const decksApi = createApi({
 	reducerPath: 'decks',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:5000',
+		baseUrl: 'https://deckio.onrender.com/',
 		fetchFn: async (...args) => {
 			await delay(100);
 			return fetch(...args);

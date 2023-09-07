@@ -11,7 +11,7 @@ const delay = (duration: number) => {
 const cardsApi = createApi({
 	reducerPath: 'cards',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:5000',
+		baseUrl: 'https://deckio.onrender.com/',
 		fetchFn: async (...args) => {
 			await delay(100);
 			return fetch(...args);
@@ -53,7 +53,7 @@ const cardsApi = createApi({
 			// }),
 
 			deleteCard: builder.mutation<void, { deckId: string; card: Card }>({
-				query: ({deckId, card}) => {
+				query: ({ deckId, card }) => {
 					return {
 						url: `decks/${deckId}/cards/${card._id}`,
 						method: 'DELETE',
