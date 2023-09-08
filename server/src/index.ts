@@ -19,21 +19,23 @@ mongoose
 // Configs
 app.use(express.json());
 
-const whitelist = [
-	'https://www.cetintekin-portfolio.com',
-	'https://deckio.onrender.com',
-];
-const corsOptions = {
-	origin: function (origin, callback) {
-		if (whitelist.indexOf(origin) !== -1 || !origin) {
-			callback(null, true);
-		} else {
-			console.log('Blocked by CORS')
-		}
-	},
-};
+// const whitelist = [
+// 	'https://www.cetintekin-portfolio.com',
+// 	'https://deckio.onrender.com',
+// ];
+// const corsOptions = {
+// 	origin: function (origin, callback) {
+// 		if (whitelist.indexOf(origin) !== -1 || !origin) {
+// 			callback(null, true);
+// 		} else {
+// 			console.log('Blocked by CORS')
+// 		}
+// 	},
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+app.use(cors({ origin: '*' }));
 
 // Routes
 app.use('/decks', deckRouter);
