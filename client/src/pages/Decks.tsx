@@ -5,9 +5,6 @@ import { Deck } from '../types/index';
 
 const Decks = () => {
 	const { data, error, isFetching } = useFetchDecksQuery();
-	console.log("data => ", data)
-	console.log("error => ", error)
-	console.log("isFetching => ", isFetching)
 
 	// TODO: Implement better error result.
 	if (error) {
