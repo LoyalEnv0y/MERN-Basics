@@ -7,11 +7,14 @@ import { Card } from '../../types';
 // 		setTimeout(resolve, duration);
 // 	});
 // };
-
+const API_URL =
+	process.env.NODE_ENV === 'production'
+		? process.env.API_URL
+		: 'http://localhost:5173';
 const cardsApi = createApi({
 	reducerPath: 'cards',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://deckio.onrender.com/',
+		baseUrl: API_URL,
 		fetchFn: async (...args) => {
 			// await delay(100);
 			return fetch(...args);

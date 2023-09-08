@@ -29,8 +29,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// app.use(cors({ origin: '*' }));
-
 // Routes
 app.use('/decks', deckRouter);
 app.use('/decks/:deckId/cards', cardRouter);
