@@ -20,7 +20,7 @@ mongoose
 app.use(express.json());
 
 const corsOptions = {
-	origin: 'https://www.cetintekin-portfolio.com',
+	origin: 'https://cetintekin-portfolio.com',
 };
 
 app.use(cors(corsOptions));
