@@ -8,6 +8,7 @@ const Decks = () => {
 
 	// TODO: Implement better error result.
 	if (error) {
+		console.log("error at decks => ", error)
 		return <div>An error has occurred</div>;
 	}
 

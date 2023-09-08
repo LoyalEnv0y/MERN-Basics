@@ -8,14 +8,10 @@ import { Deck } from '../../types';
 // 	});
 // };
 
-const API_URL =
-	process.env.NODE_ENV === 'production'
-		? process.env.API_URL
-		: 'http://localhost:5173';
 const decksApi = createApi({
 	reducerPath: 'decks',
 	baseQuery: fetchBaseQuery({
-		baseUrl: API_URL,
+		baseUrl: 'https://deckio.onrender.com',
 		fetchFn: async (...args) => {
 			// await delay(100);
 			return fetch(...args);
