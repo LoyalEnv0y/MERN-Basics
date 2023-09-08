@@ -8,10 +8,14 @@ import { Card } from '../../types';
 // 	});
 // };
 
+const URL = import.meta.env.DEV
+	? 'http://localhost:4000'
+	: 'https://deckio.onrender.com';
+	
 const cardsApi = createApi({
 	reducerPath: 'cards',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://deckio.onrender.com',
+		baseUrl: URL,
 		fetchFn: async (...args) => {
 			// await delay(100);
 			return fetch(...args);
