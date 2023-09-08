@@ -20,7 +20,7 @@ mongoose
 app.use(express.json());
 
 const originUrl =
-	process.env.NODE_ENV !== 'production'
+	process.env.NODE_ENV === 'production'
 		? 'https://cetintekin-portfolio.com'
 		: 'http://localhost:5173';
 const corsOptions = {
