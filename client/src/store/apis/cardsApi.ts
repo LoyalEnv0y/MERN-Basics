@@ -2,18 +2,18 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Card } from '../../types';
 
 // DEV ONLY!!!
-const delay = (duration: number) => {
-	return new Promise((resolve) => {
-		setTimeout(resolve, duration);
-	});
-};
+// const delay = (duration: number) => {
+// 	return new Promise((resolve) => {
+// 		setTimeout(resolve, duration);
+// 	});
+// };
 
 const cardsApi = createApi({
 	reducerPath: 'cards',
 	baseQuery: fetchBaseQuery({
 		baseUrl: 'https://deckio.onrender.com/',
 		fetchFn: async (...args) => {
-			await delay(100);
+			// await delay(100);
 			return fetch(...args);
 		},
 	}),
