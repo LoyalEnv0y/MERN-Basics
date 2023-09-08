@@ -19,9 +19,8 @@ mongoose
 // Configs
 app.use(express.json());
 
-const whitelist = ['https://www.cetintekin-portfolio.com'];
 const corsOptions = {
-	origin: whitelist,
+	origin: 'https://www.cetintekin-portfolio.com',
 };
 
 app.use(cors(corsOptions));
