@@ -18,11 +18,20 @@ mongoose
 
 // Configs
 app.use(express.json());
-app.use(
-	cors({
-		origin: '*',
-	})
-);
+
+const whitelist = [
+	'https://www.cetintekin-portfolio.com',
+	'https://deckio.onrender.com',
+];
+const corsOptions = {
+	origin: function (origin, callback) {
+		if (whitelist.indexOf(origin) !== -1) {
+			callback(null, true);
+		}
+	},
+};
+
+app.use(cors(corsOptions));
 
 // Routes
 app.use('/decks', deckRouter);
